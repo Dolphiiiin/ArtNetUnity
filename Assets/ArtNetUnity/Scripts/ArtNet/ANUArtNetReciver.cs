@@ -10,6 +10,9 @@ using LXProtocols.ArtNet.Sockets;
 
 namespace ArtNetUnity.ArtNet
 {
+    /// <summary>
+    /// Art-Netのエンドポイントを表す列挙型
+    /// </summary>
     public enum ArtNetEndpoint
     {
         Any,
@@ -17,37 +20,65 @@ namespace ArtNetUnity.ArtNet
         SpecificIP
     }
 
+    /// <summary>
+    /// UnityプロジェクトでArt-Netデータを受信するクラス
+    /// </summary>
     public class ANUArtNetReciver : MonoBehaviour
     {
+        /// <summary>
+        /// 選択されたArt-Netエンドポイント
+        /// </summary>
         [SerializeField]
-        public ArtNetEndpoint selectedEndpoint = ArtNetEndpoint.Any;
+        public ArtNetEndpoint SelectedEndpoint = ArtNetEndpoint.Any;
 
+        /// <summary>
+        /// エンドポイントがSpecificIPに設定されている場合に使用する特定のIPアドレス
+        /// </summary>
         [SerializeField]
-        public string specificIPAddress = "127.0.0.1";
+        public string SpecificIPAddress = "127.0.0.1";
 
         private ArtNetSocket _artNetSocket;
         private const int ArtNetPort = 6454;
         private const int MaxDmxChannels = 512;
 
+        /// <summary>
+        /// UnityエディターでArt-Netデータをプレビューするかどうか
+        /// </summary>
         [SerializeField]
-        private bool previewInEditor = false;
+        private bool _previewInEditor = false;
 
+        /// <summary>
+        /// 詳細な情報をログに記録するデバッグモードを有効にするかどうか
+        /// </summary>
         [SerializeField]
-        private bool debugMode = false;
+        private bool _debugMode = false;
 
-        public Dictionary<int, int> channelData = new Dictionary<int, int>();
+        /// <summary>
+        /// DMXチャンネルデータを格納するディクショナリ
+        /// </summary>
+        public Dictionary<int, int> ChannelData = new Dictionary<int, int>();
 
         private int _totalPacketsReceived = 0;
         private int _validArtNetPackets = 0;
         private int _invalidPackets = 0;
 
-        public string nodeAddress { get; set; }
-        public int universe { get; set; }
+        /// <summary>
+        /// Art-Netレシーバーのノードアドレス
+        /// </summary>
+        public string NodeAddress { get; set; }
 
+        /// <summary>
+        /// Art-Netレシーバーのユニバース番号
+        /// </summary>
+        public int Universe { get; set; }
+
+        /// <summary>
+        /// UnityのStartメソッド、Art-Netレシーバーを初期化する
+        /// </summary>
         void Start()
         {
 #if UNITY_EDITOR
-            if (previewInEditor)
+            if (_previewInEditor)
             {
                 DisposeArtNetSocket();
                 Debug.Log(_artNetSocket == null ? "ArtNet receiver disposed" : "ArtNet receiver not disposed");
@@ -56,10 +87,13 @@ namespace ArtNetUnity.ArtNet
             InitializeArtNetReceiver();
             for (int i = 1; i <= MaxDmxChannels; i++)
             {
-                channelData[i] = 0;
+                ChannelData[i] = 0;
             }
         }
 
+        /// <summary>
+        /// 選択されたエンドポイントに基づいてArt-Netレシーバーを初期化する
+        /// </summary>
         void InitializeArtNetReceiver()
         {
             DisposeArtNetSocket();
@@ -69,13 +103,13 @@ namespace ArtNetUnity.ArtNet
                 _artNetSocket = new ArtNetSocket(UId.Empty);
                 _artNetSocket.NewPacket += OnArtNetDataReceived;
 
-                switch (selectedEndpoint)
+                switch (SelectedEndpoint)
                 {
                     case ArtNetEndpoint.Localhost:
                         _artNetSocket.Open(IPAddress.Loopback, IPAddress.Loopback);
                         break;
                     case ArtNetEndpoint.SpecificIP:
-                        if (IPAddress.TryParse(specificIPAddress, out IPAddress ipAddress))
+                        if (IPAddress.TryParse(SpecificIPAddress, out IPAddress ipAddress))
                         {
                             _artNetSocket.Open(ipAddress, ipAddress);
                         }
@@ -91,7 +125,7 @@ namespace ArtNetUnity.ArtNet
                         break;
                 }
 
-                Debug.Log($"ArtNet receiver initialized on {selectedEndpoint}");
+                Debug.Log($"ArtNet receiver initialized on {SelectedEndpoint}");
             }
             catch (Exception ex)
             {
@@ -99,6 +133,11 @@ namespace ArtNetUnity.ArtNet
             }
         }
 
+        /// <summary>
+        /// Art-Netデータパケットを受信するためのイベントハンドラ
+        /// </summary>
+        /// <param name="sender">イベントの送信者</param>
+        /// <param name="e">Art-Netパケットを含むイベント引数</param>
         private void OnArtNetDataReceived(object sender, NewPacketEventArgs<ArtNetPacket> e)
         {
             if (e.Packet.OpCode == ArtNetOpCodes.Dmx)
@@ -114,17 +153,17 @@ namespace ArtNetUnity.ArtNet
                         int channel = i + 1;
                         int value = dmxPacket.DmxData[i];
 
-                        if (!channelData.ContainsKey(channel) || channelData[channel] != value)
+                        if (!ChannelData.ContainsKey(channel) || ChannelData[channel] != value)
                         {
-                            channelData[channel] = value;
-                            if (debugMode)
+                            ChannelData[channel] = value;
+                            if (_debugMode)
                             {
                                 Debug.Log($"Channel {channel} updated to {value}");
                             }
                         }
                     }
 
-                    if (debugMode && _totalPacketsReceived % 100 == 0)
+                    if (_debugMode && _totalPacketsReceived % 100 == 0)
                     {
                         Debug.Log($"ArtNet Statistics: Total:{_totalPacketsReceived} Valid:{_validArtNetPackets} Invalid:{_invalidPackets}");
                     }
@@ -133,18 +172,24 @@ namespace ArtNetUnity.ArtNet
             else
             {
                 _invalidPackets++;
-                if (debugMode)
+                if (_debugMode)
                 {
                     Debug.LogWarning($"Received non-DMX packet: {e.Packet.OpCode}");
                 }
             }
         }
 
+        /// <summary>
+        /// UnityのOnDestroyメソッド、Art-Netソケットを破棄する
+        /// </summary>
         void OnDestroy()
         {
             DisposeArtNetSocket();
         }
 
+        /// <summary>
+        /// Art-Netソケットがnullでない場合に破棄する
+        /// </summary>
         private void DisposeArtNetSocket()
         {
             if (_artNetSocket != null)
@@ -156,13 +201,16 @@ namespace ArtNetUnity.ArtNet
         }
 
 #if UNITY_EDITOR
+        /// <summary>
+        /// UnityのOnValidateメソッド、previewInEditorフラグに基づいてArt-Netレシーバーを初期化または破棄する
+        /// </summary>
         void OnValidate()
         {
-            if (!Application.isPlaying && previewInEditor)
+            if (!Application.isPlaying && _previewInEditor)
             {
                 InitializeArtNetReceiver();
             }
-            else if (!Application.isPlaying && !previewInEditor)
+            else if (!Application.isPlaying && !_previewInEditor)
             {
                 DisposeArtNetSocket();
                 Debug.Log(_artNetSocket == null ? "ArtNet receiver disposed" : "ArtNet receiver not disposed");

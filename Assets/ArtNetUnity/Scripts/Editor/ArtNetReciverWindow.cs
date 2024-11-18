@@ -12,7 +12,7 @@ namespace ArtNetUnity.Editor
     {
         private ANUArtNetReciver _receiver;
         private ScrollView _channelDataScrollView;
-        private VisualElement channelDataField;
+        private VisualElement _channelDataField;
 
         [MenuItem("Tools/ArtNetUnity/ANUArtNetReciver")]
         public static void ShowWindow()
@@ -29,7 +29,7 @@ namespace ArtNetUnity.Editor
 
             // Find the VisualElement
             _channelDataScrollView = rootVisualElement.Q<ScrollView>("channelDataScrollView");
-            channelDataField = _channelDataScrollView.Q<VisualElement>("channelDataField");
+            _channelDataField = _channelDataScrollView.Q<VisualElement>("channelDataField");
 
             // Add ObjectField for selecting the receiver
             ObjectField receiverField = new ObjectField("Receiver")
@@ -40,7 +40,7 @@ namespace ArtNetUnity.Editor
             receiverField.RegisterValueChangedCallback(evt =>
             {
                 _receiver = evt.newValue as ANUArtNetReciver;
-                UpdateChannelData(channelDataField);
+                UpdateChannelData(_channelDataField);
                 UpdateReceiverStats();
             });
             rootVisualElement.Insert(0, receiverField);
@@ -53,7 +53,7 @@ namespace ArtNetUnity.Editor
             if (state == PlayModeStateChange.EnteredPlayMode)
             {
                 _receiver = FindObjectOfType<ANUArtNetReciver>();
-                UpdateChannelData(channelDataField);
+                UpdateChannelData(_channelDataField);
                 UpdateReceiverStats();
             }
         }
@@ -151,7 +151,7 @@ namespace ArtNetUnity.Editor
         {
             if (_receiver != null)
             {
-                UpdateChannelData(channelDataField);
+                UpdateChannelData(_channelDataField);
                 UpdateReceiverStats();
             }
         }
