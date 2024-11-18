@@ -1,0 +1,16 @@
+{
+    "name": "com.dolphiiiin.artnet-unity.Fixture",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7e403d270817ef8428c71efae7735e89"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

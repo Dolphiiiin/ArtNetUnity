@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>LXProtocols.Acn</id>
+    <version>3.0.7.2</version>
+    <authors>Oliver Waits</authors>
+    <description>Provides an implementation of the suite of protocols under the ACN protocol. This library includes the following protocols ACN, SLP, SNTP, StreamingACN and RDM.</description>
+    <copyright>Copyright © Oliver Waits 2020</copyright>
+    <tags>ACN, Lighting, Protocol</tags>
+    <repository type="git" url="https://github.com/owaits/ACN" commit="60492945d97af95e3d7496e8ce56601c648a5dfa" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+</package>

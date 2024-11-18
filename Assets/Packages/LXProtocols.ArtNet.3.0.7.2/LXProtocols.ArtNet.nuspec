@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>LXProtocols.ArtNet</id>
+    <version>3.0.7.2</version>
+    <authors>Oliver Waits</authors>
+    <description>Provides an implementation of the ArtNet standard used to send DMX data and other lighting specific information between devices on a lighting network.</description>
+    <copyright>Copyright © Oliver Waits 2020</copyright>
+    <tags>ArtNet, Lighting</tags>
+    <repository type="git" url="https://github.com/owaits/ACN" commit="60492945d97af95e3d7496e8ce56601c648a5dfa" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="LXProtocols.Acn" version="3.0.7.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

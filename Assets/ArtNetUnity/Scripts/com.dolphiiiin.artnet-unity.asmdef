@@ -1,0 +1,16 @@
+{
+    "name": "com.dolphiiiin.artnet-unity",
+    "rootNamespace": "ArtNetUnity",
+    "references": [
+        ""
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

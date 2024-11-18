@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:Template name="ArtNetReciverPreview" src="project://database/Assets/ArtNetUnity/uxml/ArtNetReciverPreview.uxml?fileID=9197481963319205126&amp;guid=cd8df208fe01f3c4a8f994cf0590253c&amp;type=3" />
+    <Style src="project://database/Assets/ArtNetUnity/uxml/ANUMainWindow.uss?fileID=7433441132597879392&amp;guid=481981fd43b12574f84b4a178aa4b18a&amp;type=3#ANUMainWindow" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="SideBar" style="flex-grow: initial; width: 250px; border-top-width: 0; border-right-width: 1px; border-bottom-width: 0; border-left-width: 0; border-left-color: rgb(154, 154, 154); border-right-color: rgb(154, 154, 154); border-top-color: rgb(154, 154, 154); border-bottom-color: rgb(154, 154, 154);">
+            <ui:TreeView />
+        </ui:VisualElement>
+        <ui:VisualElement name="Main" style="flex-grow: 1;">
+            <ui:Instance template="ArtNetReciverPreview" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
