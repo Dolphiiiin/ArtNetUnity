@@ -3,8 +3,8 @@ using UnityEditor;
 
 namespace ArtNetUnity.ArtNet
 {
-    [CustomEditor(typeof(ANUArtNetReciver))]
-    public class ANUArtNetReciverEditor : Editor
+    [CustomEditor(typeof(ANUArtNetReceiver))]
+    public class ANUArtNetReceiverEditor : Editor
     {
         public override void OnInspectorGUI()
         {

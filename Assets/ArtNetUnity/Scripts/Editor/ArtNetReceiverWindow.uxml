@@ -5,7 +5,10 @@
                 <ui:VisualElement name="channelDataField" style="flex-direction: row; flex-wrap: wrap;" />
             </ui:ScrollView>
         </ui:VisualElement>
-        <ui:VisualElement name="VisualElement" style="background-color: rgb(75, 75, 75); width: auto; align-items: auto; border-left-color: rgb(127, 127, 127); border-left-width: 2px; max-width: 250px; min-width: 250px;">
+        <ui:VisualElement style="width: 20px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+            <ui:Button text="=" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SideMenuFoldButton" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SideMenu" style="background-color: rgb(75, 75, 75); width: auto; align-items: auto; border-left-color: rgb(127, 127, 127); border-left-width: 2px; max-width: 250px; min-width: 250px; display: flex;">
             <ui:VisualElement style="align-self: auto; background-color: rgb(50, 50, 50); width: 250px; height: 20px; align-items: auto; border-top-width: 0; border-right-width: 0; border-bottom-width: 1px; border-left-width: 2px; border-left-color: rgb(127, 127, 127); border-right-color: rgb(127, 127, 127); border-top-color: rgb(127, 127, 127); border-bottom-color: rgb(127, 127, 127);">
                 <ui:Label tabindex="-1" text="Reciver Stats" parse-escape-sequences="true" display-tooltip-when-elided="true" style="align-self: center; justify-content: flex-start; align-items: flex-end; -unity-text-align: upper-center; -unity-font-style: bold; font-size: 16px;" />
             </ui:VisualElement>
@@ -22,15 +25,15 @@
             </ui:VisualElement>
             <ui:VisualElement style="align-self: flex-start; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-direction: row; justify-content: space-between; width: 100%; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; align-items: auto;">
                 <ui:Label tabindex="-1" text="Channel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="white-space: nowrap; font-size: 15px; -unity-font-style: bold; align-self: flex-start;" />
-                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedChannel" style="white-space: nowrap; font-size: 15px; color: rgb(255, 255, 255); -unity-text-align: upper-right; align-self: flex-end;" />
+                <ui:Label tabindex="-1" text="-" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedChannel" style="white-space: nowrap; font-size: 15px; color: rgb(255, 255, 255); -unity-text-align: upper-right; align-self: flex-end;" />
             </ui:VisualElement>
             <ui:VisualElement style="align-self: flex-start; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-direction: row; justify-content: space-between; width: 100%; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; align-items: auto;">
                 <ui:Label tabindex="-1" text="Value" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedFormatedValue" style="white-space: nowrap; font-size: 15px; -unity-font-style: bold; align-self: flex-start;" />
-                <ui:Label tabindex="-1" text="100%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedChannel" style="white-space: nowrap; font-size: 15px; color: rgb(255, 255, 255); -unity-text-align: upper-right; align-self: flex-end;" />
+                <ui:Label tabindex="-1" text="-%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedChannelValue" style="white-space: nowrap; font-size: 15px; color: rgb(255, 255, 255); -unity-text-align: upper-right; align-self: flex-end;" />
             </ui:VisualElement>
             <ui:VisualElement style="align-self: flex-start; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; flex-direction: row; justify-content: space-between; width: 100%; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; align-items: auto;">
                 <ui:Label tabindex="-1" text="Value (Raw)" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedRawValue" style="white-space: nowrap; font-size: 15px; -unity-font-style: bold; align-self: flex-start;" />
-                <ui:Label tabindex="-1" text="255" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedChannel" style="white-space: nowrap; font-size: 15px; color: rgb(255, 255, 255); -unity-text-align: upper-right; align-self: flex-end;" />
+                <ui:Label tabindex="-1" text="-" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectedChannelRawValue" style="white-space: nowrap; font-size: 15px; color: rgb(255, 255, 255); -unity-text-align: upper-right; align-self: flex-end;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

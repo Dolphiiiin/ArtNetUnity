@@ -9,13 +9,13 @@ namespace ArtNetUnity.Fixture
 {
     public class ANUAttributeTypeDropdown : AdvancedDropdown
     {
-        private Action<int> onItemSelected;
-        private List<AdvancedDropdownItem> items;
+        private Action<int> _onItemSelected;
+        private List<AdvancedDropdownItem> _items;
 
         public ANUAttributeTypeDropdown(AdvancedDropdownState state, Action<int> onItemSelected) : base(state)
         {
-            this.onItemSelected = onItemSelected;
-            items = new List<AdvancedDropdownItem>();
+            this._onItemSelected = onItemSelected;
+            _items = new List<AdvancedDropdownItem>();
             minimumSize = new UnityEngine.Vector2(minimumSize.x, 15 * EditorGUIUtility.singleLineHeight);
             BuildRoot();
         }
@@ -63,7 +63,7 @@ namespace ArtNetUnity.Fixture
 
                         if (i == enumNameSplit.Length - 1)
                         {
-                            items.Add(item);
+                            _items.Add(item);
                         }
                     }
                 }
@@ -74,7 +74,7 @@ namespace ArtNetUnity.Fixture
 
         protected override void ItemSelected(AdvancedDropdownItem item)
         {
-            onItemSelected?.Invoke(item.id);
+            _onItemSelected?.Invoke(item.id);
         }
     }
 }

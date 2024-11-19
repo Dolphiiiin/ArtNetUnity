@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:TextField picking-mode="Ignore" label="Fixture Name" name="FixtureName" />
+        <ui:TextField picking-mode="Ignore" label="Description" multiline="true" name="Description" />
+        <ui:EnumField label="Fixture Type" type="ArtNetUnity.Fixture.ANUFixtureAsset+Type, com.dolphiiiin.artnet-unity.Fixture" name="FixtureType" />
+        <ui:VisualElement style="height: 1px; background-color: rgb(128, 128, 128); margin-top: 5px; margin-bottom: 5px;" />
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:VisualElement style="width: 20px; -unity-text-align: upper-center;">
+                    <ui:Label tabindex="-1" text="1" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1;">
+                    <ui:TextField picking-mode="Ignore" label="Channel Name" value="filler text" />
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:VisualElement style="flex-grow: 1;">
+                            <ui:TextField picking-mode="Ignore" label="Attribute Name" value="filler text" />
+                            <ui:EnumField label="Attribute Type" type="ArtNetUnity.Fixture.ANUFixtureAsset+AttributeType, com.dolphiiiin.artnet-unity.Fixture" />
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-around;">
+                                <ui:FloatField label="Min" value="0" />
+                                <ui:FloatField label="Max" value="1" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

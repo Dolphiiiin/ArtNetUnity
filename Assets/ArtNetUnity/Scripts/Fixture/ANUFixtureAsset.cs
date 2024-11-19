@@ -9,15 +9,9 @@ namespace ArtNetUnity.Fixture
     [CreateAssetMenu(menuName = "ArtNetUnity/FixtureAsset")]
     public class ANUFixtureAsset : ScriptableObject
     {
-        /// <summary>
-        /// フィクスチャの名前
-        /// </summary>
-        public string fixtureName;
+        [Tooltip("フィクスチャの名前")] public string fixtureName;
 
-        /// <summary>
-        /// フィクスチャの説明
-        /// </summary>
-        public string description;
+        [Tooltip("フィクスチャの説明")] public string description;
 
         /// <summary>
         /// フィクスチャの種類を表す列挙型
@@ -32,15 +26,9 @@ namespace ArtNetUnity.Fixture
             Other,
         }
 
-        /// <summary>
-        /// フィクスチャの種類
-        /// </summary>
-        public Type fixtureType;
+        [Tooltip("フィクスチャの種類")] public Type fixtureType;
 
-        /// <summary>
-        /// フィクスチャに関連付けられたチャンネルの配列
-        /// </summary>
-        public Channel[] channels;
+        [Tooltip("フィクスチャに関連付けられたチャンネルの配列")] public Channel[] channels;
 
         /// <summary>
         /// 名前と説明でフィクスチャアセットを初期化するコンストラクタ
@@ -59,20 +47,11 @@ namespace ArtNetUnity.Fixture
         [System.Serializable]
         public class Channel
         {
-            /// <summary>
-            /// チャンネルの名前
-            /// </summary>
-            public string channelName;
+            [Tooltip("チャンネルの名前")] public string channelName;
 
-            /// <summary>
-            /// チャンネル番号
-            /// </summary>
-            public int channelNumber;
+            [Tooltip("チャンネル番号")] public int channelNumber;
 
-            /// <summary>
-            /// チャンネルに関連付けられた属性のリスト
-            /// </summary>
-            public List<Attribute> attributes;
+            [Tooltip("チャンネルに関連付けられた属性のリスト")] public List<Attribute> attributes;
 
             /// <summary>
             /// 空の属性リストでチャンネルを初期化するコンストラクタ
@@ -89,25 +68,13 @@ namespace ArtNetUnity.Fixture
         [System.Serializable]
         public class Attribute
         {
-            /// <summary>
-            /// 属性の名前
-            /// </summary>
-            public string attributeName;
+            [Tooltip("属性の名前")] public string attributeName;
 
-            /// <summary>
-            /// 属性の種類
-            /// </summary>
-            public AttributeType attributeType;
+            [Tooltip("属性の種類")] public AttributeType attributeType;
 
-            /// <summary>
-            /// 属性の最小値
-            /// </summary>
-            public float minValue;
+            [Tooltip("属性の最小値")] public float minValue;
 
-            /// <summary>
-            /// 属性の最大値
-            /// </summary>
-            public float maxValue;
+            [Tooltip("属性の最大値")] public float maxValue;
         }
 
         /// <summary>

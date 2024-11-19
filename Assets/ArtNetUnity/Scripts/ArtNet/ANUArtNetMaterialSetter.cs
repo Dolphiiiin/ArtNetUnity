@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ArtNetUnity.ArtNet
 {
@@ -11,50 +12,28 @@ namespace ArtNetUnity.ArtNet
     [ExecuteAlways]
     public class ANUArtNetMaterialSetter : MonoBehaviour
     {
-        /// <summary>
-        /// Art-Netレシーバーへの参照
-        /// </summary>
-        [SerializeField]
-        private ANUArtNetReciver _artNetReciver;
+        [Tooltip("Art-Netレシーバーへの参照")] [SerializeField]
+        private ANUArtNetReceiver artNetReceiver;
 
-        /// <summary>
-        /// MeshRendererコンポーネントへの参照
-        /// </summary>
-        [SerializeField]
-        private MeshRenderer _meshRenderer;
+        [Tooltip("MeshRendererコンポーネントへの参照")] [SerializeField]
+        private MeshRenderer meshRenderer;
 
-        /// <summary>
-        /// チャンネルとマテリアルプロパティのマッピングの配列
-        /// </summary>
-        [SerializeField]
-        private ChannelMaterialProperty[] _channelToMaterialProperties;
+        [Tooltip("チャンネルとマテリアルプロパティのマッピングの配列")] [SerializeField]
+        private ChannelMaterialProperty[] channelToMaterialProperties;
 
-        /// <summary>
-        /// マテリアルプロパティの最小値
-        /// </summary>
-        [SerializeField]
-        private float _minValue = 0f;
+        [Tooltip("マテリアルプロパティの最小値")] [SerializeField]
+        private float minValue = 0f;
 
-        /// <summary>
-        /// マテリアルプロパティの最大値
-        /// </summary>
-        [SerializeField]
-        private float _maxValue = 1f;
+        [Tooltip("マテリアルプロパティの最大値")] [SerializeField]
+        private float maxValue = 1f;
 
-        /// <summary>
-        /// Unityエディタで変更をプレビューするかどうか
-        /// </summary>
-        [SerializeField]
-        private bool _previewInEditor = false;
+        [Tooltip("Editorでプレビュー")] [SerializeField]
+        private bool previewInEditor = false;
 
-        /// <summary>
-        /// チャンネルデータのコピーを格納する辞書
-        /// </summary>
+        // チャンネルデータのコピー
         private Dictionary<int, int> _channelDataCopy = new Dictionary<int, int>();
 
-        /// <summary>
-        /// アプリケーションが実行中かどうかを示すフラグ
-        /// </summary>
+        // プレイ中かどうか
         private bool _isPlaying = false;
 
         /// <summary>
@@ -82,9 +61,9 @@ namespace ArtNetUnity.ArtNet
         {
             while (_isPlaying)
             {
-                if (_artNetReciver != null)
+                if (artNetReceiver != null)
                 {
-                    _channelDataCopy = new Dictionary<int, int>(_artNetReciver.channelData);
+                    _channelDataCopy = new Dictionary<int, int>(artNetReceiver.ChannelData);
                 }
                 yield return new WaitForSeconds(0.1f);
             }
@@ -95,7 +74,7 @@ namespace ArtNetUnity.ArtNet
         /// </summary>
         void Update()
         {
-            if (!_isPlaying && !_previewInEditor) return;
+            if (!_isPlaying && !previewInEditor) return;
 
             UpdateMaterialProperties();
         }
@@ -105,19 +84,22 @@ namespace ArtNetUnity.ArtNet
         /// </summary>
         private void UpdateMaterialProperties()
         {
-            if (_artNetReciver != null && _meshRenderer != null)
+            if (artNetReceiver != null && meshRenderer != null)
             {
                 foreach (var entry in _channelDataCopy)
                 {
                     int channel = entry.Key;
                     int value = entry.Value;
 
-                    foreach (var mapping in _channelToMaterialProperties)
+                    foreach (var mapping in channelToMaterialProperties)
                     {
                         if (mapping.channel == channel)
                         {
-                            float normalizedValue = Mathf.Lerp(_minValue, _maxValue, value / 255f);
-                            _meshRenderer.sharedMaterial.SetFloat(mapping.propertyName, normalizedValue);
+                            // マテリアルプロパティの値を正規化
+                            float normalizedValue = Mathf.Lerp(minValue, maxValue, value / 255f);
+                            
+                            // マテリアルプロパティを更新
+                            meshRenderer.sharedMaterial.SetFloat(mapping.propertyName, normalizedValue);
                         }
                     }
                 }
@@ -130,7 +112,7 @@ namespace ArtNetUnity.ArtNet
         /// </summary>
         private void OnValidate()
         {
-            if (!Application.isPlaying && _previewInEditor)
+            if (!Application.isPlaying && previewInEditor)
             {
                 StartCoroutine(UpdateChannelDataCopy());
                 UpdateMaterialProperties();
