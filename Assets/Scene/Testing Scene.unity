@@ -225,7 +225,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 0.89411765
+    - _Intensity: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -468,7 +468,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 1
+    - _Intensity: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -491,6 +491,54 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
+--- !u!1 &607541366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607541368}
+  - component: {fileID: 607541367}
+  m_Layer: 0
+  m_Name: ArtNetReciver (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &607541367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607541366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faac1543a1c34b4d9cd17f46708a55c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedUniverse: 1
+  artNetEndPoint: {fileID: 812338199}
+  previewInEditor: 1
+  debugMode: 0
+--- !u!4 &607541368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 607541366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &752776819
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,8 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faac1543a1c34b4d9cd17f46708a55c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEndpoint: 2
-  specificIPAddress: 192.168.196.4
+  selectedUniverse: 0
+  artNetEndPoint: {fileID: 812338199}
   previewInEditor: 1
   debugMode: 0
 --- !u!4 &752776821
@@ -531,6 +579,52 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752776819}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &812338198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812338200}
+  - component: {fileID: 812338199}
+  m_Layer: 0
+  m_Name: ArtNetEndPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &812338199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812338198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce74d3ccdbb053e469864dbbf316948f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedEndpoint: 2
+  specificIPAddress: 192.168.196.4
+--- !u!4 &812338200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812338198}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -568,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcff41812094869a8dbf9f50b85fb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fixtureAsset: {fileID: 11400000, guid: 352cca328f579f544a215514b6e75f39, type: 2}
+  fixtureAsset: {fileID: 0}
 --- !u!4 &943898825
 Transform:
   m_ObjectHideFlags: 0
@@ -1013,11 +1107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a835f18fc7942a997ca9c2aecdda921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  artNetReciver: {fileID: 752776820}
-  meshRenderer: {fileID: 1207532851}
-  channelToMaterialProperties:
-  - channel: 1
-    propertyName: _Intensity
+  artNetReceiver: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  channelToMaterialProperties: []
   minValue: 0
   maxValue: 1
   previewInEditor: 1
@@ -1053,11 +1145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a835f18fc7942a997ca9c2aecdda921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  artNetReciver: {fileID: 752776820}
-  meshRenderer: {fileID: 1220235810}
-  channelToMaterialProperties:
-  - channel: 3
-    propertyName: _Intensity
+  artNetReceiver: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  channelToMaterialProperties: []
   minValue: 0
   maxValue: 1
   previewInEditor: 1
@@ -1142,6 +1232,54 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.75, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1603971705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603971707}
+  - component: {fileID: 1603971706}
+  m_Layer: 0
+  m_Name: ArtNetReciver (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1603971706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603971705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faac1543a1c34b4d9cd17f46708a55c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedUniverse: 2
+  artNetEndPoint: {fileID: 812338199}
+  previewInEditor: 1
+  debugMode: 0
+--- !u!4 &1603971707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603971705}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1282,11 +1420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a835f18fc7942a997ca9c2aecdda921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  artNetReciver: {fileID: 752776820}
-  meshRenderer: {fileID: 2054520699}
-  channelToMaterialProperties:
-  - channel: 2
-    propertyName: _Intensity
+  artNetReceiver: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  channelToMaterialProperties: []
   minValue: 0
   maxValue: 1
   previewInEditor: 1
@@ -1384,8 +1520,11 @@ SceneRoots:
   - {fileID: 203844589}
   - {fileID: 1160234427}
   - {fileID: 752776821}
+  - {fileID: 607541368}
+  - {fileID: 1603971707}
   - {fileID: 1743794136}
   - {fileID: 1207532853}
   - {fileID: 2054520701}
   - {fileID: 1220235812}
   - {fileID: 943898825}
+  - {fileID: 812338200}

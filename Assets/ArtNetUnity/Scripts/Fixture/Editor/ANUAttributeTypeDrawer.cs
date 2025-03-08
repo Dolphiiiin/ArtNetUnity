@@ -8,7 +8,7 @@ namespace ArtNetUnity.Fixture
     [CustomPropertyDrawer(typeof(ANUFixtureAsset.AttributeType))]
     public class ANUAttributeTypeDrawer : PropertyDrawer
     {
-        private AdvancedDropdownState dropdownState = new AdvancedDropdownState();
+        private AdvancedDropdownState _dropdownState = new AdvancedDropdownState();
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -21,7 +21,7 @@ namespace ArtNetUnity.Fixture
 
             if (GUI.Button(position, attributeTypeString, EditorStyles.popup))
             {
-                var dropdown = new ANUAttributeTypeDropdown(dropdownState, (selectedIndex) =>
+                var dropdown = new ANUAttributeTypeDropdown(_dropdownState, (selectedIndex) =>
                 {
                     property.enumValueIndex = selectedIndex;
                     property.serializedObject.ApplyModifiedProperties();
